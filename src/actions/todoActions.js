@@ -17,6 +17,13 @@ export function addTodo(text) {
 export function toggleTodo(id) {
   return {
     type: types.TOGGLE_TODO,
-    payload: id
+    id
+  }
+}
+
+export function removeTodo(index) {
+  return {
+    type: types.REMOVE_TODO,
+    index
   }
 }

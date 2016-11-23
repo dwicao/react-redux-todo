@@ -1,22 +1,28 @@
 import React, { PropTypes } from 'react';
 
-const TodoList = (props) => {
+const TodoList = ({ todos, actions }) => {
 
-  const { todos, actions } = props;
+  const _toggleClick = id => event => actions.toggleTodo(id);
 
-  const toggleClick = id => event => actions.toggleTodo(id);
+  const _removeTodo = index => event => actions.removeTodo(index);
 
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.map((todo, index) => (
         <li
-          key={todo.id}
-          onClick={toggleClick(todo.id)}>
+          key={index}
+          onClick={_toggleClick(todo.id)}>
           {
             todo.isDone ?
-            <strike>{todo.text}</strike>
+              <strike>
+                {todo.text}
+                <button onClick={_removeTodo(index)}>&times;</button>
+              </strike>
             :
-            <span>{todo.text}</span>
+              <span>
+                {todo.text}
+                <button onClick={_removeTodo(index)}>&times;</button>
+              </span>
           }
         </li>
       ))}
