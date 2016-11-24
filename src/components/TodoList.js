@@ -30,6 +30,19 @@ const TodoList = (props) => {
     visibilityFilter
   );
 
+  const renderList = (currTodo, index) => {
+    return (
+      <div>
+        <ToggleTodo
+          isDone={currTodo.isDone}
+          todoId={currTodo.id}
+          actions={actions} />
+        {currTodo.text}
+        <button onClick={_removeTodo(index)}>&times;</button>
+      </div>
+    );
+  }
+
   return (
     <div>
       <p>
@@ -57,29 +70,12 @@ const TodoList = (props) => {
         </FilterLink>
       </p>
       <ul>
-        {visibleTodos.map((todo, index) => (
-          <li
-            key={index}
-            >
-            {
-              todo.isDone ?
-                <strike>
-                  <ToggleTodo
-                    isDone={todo.isDone}
-                    todoId={todo.id}
-                    actions={actions} />
-                  {todo.text}
-                  <button onClick={_removeTodo(index)}>&times;</button>
-                </strike>
+        {visibleTodos.map((currTodo, index) => (
+          <li key={index}>
+            { currTodo.isDone ?
+                <strike>{renderList(currTodo, index)}</strike>
               :
-                <span>
-                  <ToggleTodo
-                    isDone={todo.isDone}
-                    todoId={todo.id}
-                    actions={actions} />
-                  {todo.text}
-                  <button onClick={_removeTodo(index)}>&times;</button>
-                </span>
+                <span>{renderList(currTodo, index)}</span>
             }
           </li>
         ))}
