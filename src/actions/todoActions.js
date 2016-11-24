@@ -27,3 +27,10 @@ export function removeTodo(index) {
     index
   }
 }
+
+export function setVisibilityFilter(filter) {
+  return {
+    type: types.SET_VISIBILITY_FILTER,
+    filter
+  }
+}

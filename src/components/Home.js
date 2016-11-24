@@ -5,6 +5,7 @@ import * as todoActions from '../actions/todoActions';
 
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
+import TodoFilter from './TodoFilter';
 
 class Home extends React.Component {
   render() {
@@ -12,6 +13,7 @@ class Home extends React.Component {
       <div>
         <AddTodo {...this.props} />
         <TodoList {...this.props} />
+        <TodoFilter {...this.props} />
       </div>
     );
   }
@@ -24,6 +26,7 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    visibilityFilter: state.visibilityFilter,
     todos: state.todos
   };
 }

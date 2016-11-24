@@ -11,11 +11,11 @@ export default function todoReducer(state = [], action) {
 
     case types.TOGGLE_TODO:
       return state.map(todo => {
-        if(todo.id === action.id) {
-          return Object.assign({}, todo, { isDone: !todo.isDone });
-        } else {
+        if(todo.id !== action.id) {
           return todo;
         }
+        
+        return Object.assign({}, todo, { isDone: !todo.isDone });
       });
 
     case types.REMOVE_TODO:
@@ -23,6 +23,11 @@ export default function todoReducer(state = [], action) {
         ...state.slice(0, action.index),
         ...state.slice(action.index + 1)
       ]
+
+    case types.FILTER_TODO:
+      return state.filter(todo => {
+        return todo.visibilityFilter === action.filter;
+      });
 
     default:
       return state;
