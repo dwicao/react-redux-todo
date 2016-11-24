@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const AddTodo = ({ todos, actions }) => {
+const AddTodo = (props) => {
+
+  const { todos, actions } = props;
 
   const onAddTodo = (event) => {
     const input = event.target;
