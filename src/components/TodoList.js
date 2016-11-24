@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import FilterLink from './FilterLink';
+import ToggleTodo from './ToggleTodo';
 
 const TodoList = (props) => {
 
@@ -31,26 +32,6 @@ const TodoList = (props) => {
 
   return (
     <div>
-      <ul>
-        {visibleTodos.map((todo, index) => (
-          <li
-            key={index}
-            onClick={_toggleClick(todo.id)}>
-            {
-              todo.isDone ?
-                <strike>
-                  {todo.text}
-                  <button onClick={_removeTodo(index)}>&times;</button>
-                </strike>
-              :
-                <span>
-                  {todo.text}
-                  <button onClick={_removeTodo(index)}>&times;</button>
-                </span>
-            }
-          </li>
-        ))}
-      </ul>
       <p>
         Show:
         {' '}
@@ -75,6 +56,34 @@ const TodoList = (props) => {
           Completed
         </FilterLink>
       </p>
+      <ul>
+        {visibleTodos.map((todo, index) => (
+          <li
+            key={index}
+            >
+            {
+              todo.isDone ?
+                <strike>
+                  <ToggleTodo
+                    isDone={todo.isDone}
+                    todoId={todo.id}
+                    actions={actions} />
+                  {todo.text}
+                  <button onClick={_removeTodo(index)}>&times;</button>
+                </strike>
+              :
+                <span>
+                  <ToggleTodo
+                    isDone={todo.isDone}
+                    todoId={todo.id}
+                    actions={actions} />
+                  {todo.text}
+                  <button onClick={_removeTodo(index)}>&times;</button>
+                </span>
+            }
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
