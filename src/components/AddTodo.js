@@ -20,7 +20,7 @@ const AddTodo = (props) => {
     <div>
       <input
           type="text"
-          placeholder="Add Todo"
+          placeholder="Press Enter to Add Todo"
           onKeyDown={onAddTodo} />
     </div>
   );

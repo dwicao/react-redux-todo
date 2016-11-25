@@ -75,15 +75,18 @@ const TodoList = (props) => {
       actions.toggleEditTodo(currTodo.id);
     }
 
+    const truncateStr = (str, len) => {
+      return str.length > len ? str.substring(0, len - 3) + '...' : str;
+    }
+
     if(currTodo.isEditing){
       return (
         <div>
-        <input
-          type="text"
-          maxlength="10"
-          onKeyDown={_onKeyDown}
-          onChange={_onChange}
-          value={currTodo.text} />
+          <input
+            type="text"
+            onKeyDown={_onKeyDown}
+            onChange={_onChange}
+            value={currTodo.text} />
           <button onClick={_onApply}>Apply</button>
         </div>
       );
@@ -93,7 +96,7 @@ const TodoList = (props) => {
       return (
         <div>
           {renderToggleTodo()}
-          <strike>{currTodo.text}</strike>
+          <strike>{truncateStr(currTodo.text, 36)}</strike>
           {renderButton()}
         </div>
       );
@@ -101,7 +104,7 @@ const TodoList = (props) => {
       return (
         <div>
           {renderToggleTodo()}
-          <span>{currTodo.text}</span>
+          <span>{truncateStr(currTodo.text, 36)}</span>
           {renderButton()}
         </div>
       );  
@@ -113,22 +116,20 @@ const TodoList = (props) => {
   return (
     <div>
       <p>
-        Show:
-        {' '}
         <FilterLink
           filter='SHOW_ALL'
           {...props}
         >
-          All
+          View All
         </FilterLink>
-        {' '}
+        {' / '}
         <FilterLink
           filter='SHOW_ACTIVE'
           {...props}
         >
           Active
         </FilterLink>
-        {' '}
+        {' / '}
         <FilterLink
           filter='SHOW_COMPLETED'
           {...props}
