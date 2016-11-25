@@ -71,14 +71,20 @@ const TodoList = (props) => {
       event.target.value = currTodo.text;
     }
 
+    const _onApply = () => {
+      actions.toggleEditTodo(currTodo.id);
+    }
+
     if(currTodo.isEditing){
       return (
         <div>
         <input
           type="text"
+          maxlength="10"
           onKeyDown={_onKeyDown}
           onChange={_onChange}
           value={currTodo.text} />
+          <button onClick={_onApply}>Apply</button>
         </div>
       );
     }
