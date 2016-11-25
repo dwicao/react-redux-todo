@@ -1,32 +1,38 @@
 import React, {PropTypes} from 'react';
 import ToggleTodo from './ToggleTodo';
+import EditTodo from './EditTodo';
+import ButtonEditAndRemove from './ButtonEditAndRemove';
 
 const TodoItem = (props) => {
 	const { actions, currTodo, index } = props;
 
 	const _toggleClick = id => event => actions.toggleTodo(id);
 
-  const _removeTodo = index => event => actions.removeTodo(index);
-
-  const _toggleEdit = id => event => actions.toggleEditTodo(id);
-
-  const renderToggleTodo = () => (
-      <ToggleTodo
-        isDone={currTodo.isDone}
-        todoId={currTodo.id}
-        actions={actions} />
-    );
-
-  const renderButton = () => (
-    <span>
-      <button onClick={_toggleEdit(currTodo.id)}>&#8230;</button>
-      <button onClick={_removeTodo(index)}>&times;</button>
-    </span>
-  );
-
   const truncateStr = (str, len) => {
     return str.length > len ? str.substring(0, len - 3) + '...' : str;
   } 
+
+  const _onChange = event => {
+    actions.editTodo(currTodo.id, event.target.value);
+    event.target.value = currTodo.text;
+  }
+
+  const _onApply = () => {
+    actions.toggleEditTodo(currTodo.id);
+  }
+
+  const renderToggleTodo = () => (
+    <ToggleTodo
+      isDone={currTodo.isDone}
+      todoId={currTodo.id}
+      {...props} />
+  );
+
+  const renderButton = () => (
+    <ButtonEditAndRemove 
+      todoId={currTodo.id}
+      {...props} />
+  );
 
   const _onKeyDown = event => {
     const input = event.target;
@@ -46,16 +52,6 @@ const TodoItem = (props) => {
       );
     }
   }
-
-  const _onChange = event => {
-    actions.editTodo(currTodo.id, event.target.value);
-    event.target.value = currTodo.text;
-  }
-
-  const _onApply = () => {
-    actions.toggleEditTodo(currTodo.id);
-  }
-
 
   if(currTodo.isEditing){
     return (

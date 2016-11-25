@@ -1,14 +1,16 @@
 import React, {PropTypes} from 'react';
 
-const ToggleTodo = ({ isDone, todoId, actions }) => {
+const ToggleTodo = (props) => {
+	const { isDone, todoId, actions } = props;
 	
 	const _toggleClick = id => event => actions.toggleTodo(id);
 
 	if(isDone) {
 		return <button onClick={_toggleClick(todoId)}>&#9745;</button>;
+	} else {
+		return <button onClick={_toggleClick(todoId)}>&#9744;</button>;
 	}
 
-	return <button onClick={_toggleClick(todoId)}>&#9744;</button>;
 };
 
 ToggleTodo.propTypes = {

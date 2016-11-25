@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 
 const FilterLink = (props) => {
-
 	const { filter, visibilityFilter, actions, children } = props;
 
 	const _handleClick = event => {
