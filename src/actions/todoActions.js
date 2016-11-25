@@ -9,28 +9,44 @@ export function addTodo(text) {
     payload: {
       id: uid(),
       isDone: false,
+      isEditing: false,
       text
     }
-  }
+  };
 }
 
 export function toggleTodo(id) {
   return {
     type: types.TOGGLE_TODO,
     id
+  };
+}
+
+export function toggleEditTodo(id) {
+  return {
+    type: types.TOGGLE_EDIT_TODO,
+    id
   }
+}
+
+export function editTodo(id, text) {
+  return {
+    type: types.EDIT_TODO,
+    id,
+    text
+  };
 }
 
 export function removeTodo(index) {
   return {
     type: types.REMOVE_TODO,
     index
-  }
+  };
 }
 
 export function setVisibilityFilter(filter) {
   return {
     type: types.SET_VISIBILITY_FILTER,
     filter
-  }
+  };
 }

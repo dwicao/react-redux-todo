@@ -18,11 +18,29 @@ export default function todoReducer(state = [], action) {
         return Object.assign({}, todo, { isDone: !todo.isDone });
       });
 
+    case types.EDIT_TODO:
+      return state.map(todo => {
+        if(todo.id !== action.id) {
+          return todo;
+        }
+
+        return Object.assign({}, todo, { text: action.text });
+      });
+
+    case types.TOGGLE_EDIT_TODO:
+      return state.map(todo => {
+        if(todo.id !== action.id) {
+          return todo;
+        }
+        
+        return Object.assign({}, todo, { isEditing: !todo.isEditing });
+      });
+
     case types.REMOVE_TODO:
       return [
         ...state.slice(0, action.index),
         ...state.slice(action.index + 1)
-      ]
+      ];
 
     case types.FILTER_TODO:
       return state.filter(todo => {

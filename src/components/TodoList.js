@@ -10,6 +10,8 @@ const TodoList = (props) => {
 
   const _removeTodo = index => event => actions.removeTodo(index);
 
+  const _toggleEdit = id => event => actions.toggleEditTodo(id);
+
   const getVisibleTodos = (allTodos, whatFilter) => {
     switch(whatFilter) {
       case 'SHOW_ALL':
@@ -31,17 +33,76 @@ const TodoList = (props) => {
   );
 
   const renderList = (currTodo, index) => {
-    return (
-      <div>
-        <ToggleTodo
-          isDone={currTodo.isDone}
-          todoId={currTodo.id}
-          actions={actions} />
-        {currTodo.text}
-        <button onClick={_removeTodo(index)}>&times;</button>
-      </div>
+    const renderToggleTodo = () => (
+      <ToggleTodo
+        isDone={currTodo.isDone}
+        todoId={currTodo.id}
+        actions={actions} />
     );
-  }
+
+    const renderButton = () => (
+      <span>
+        <button onClick={_toggleEdit(currTodo.id)}>&#8230;</button>
+        <button onClick={_removeTodo(index)}>&times;</button>
+      </span>
+    );
+
+    const _onKeyDown = event => {
+      const input = event.target;
+      const text = input.value;
+      const isEnterKey = (event.which === 13);
+      const isLongEnough = text.length > 0;
+
+      if(isEnterKey && isLongEnough) {
+        actions.editTodo(currTodo.id, text);
+        actions.toggleEditTodo(currTodo.id);
+        return (
+          <div>
+            {renderToggleTodo()}
+            <span>{currTodo.text}</span>
+            {renderButton()}
+          </div>
+        );
+      }
+    }
+
+    const _onChange = event => {
+      actions.editTodo(currTodo.id, event.target.value);
+      event.target.value = currTodo.text;
+    }
+
+    if(currTodo.isEditing){
+      return (
+        <div>
+        <input
+          type="text"
+          onKeyDown={_onKeyDown}
+          onChange={_onChange}
+          value={currTodo.text} />
+        </div>
+      );
+    }
+
+    if(currTodo.isDone) {
+      return (
+        <div>
+          {renderToggleTodo()}
+          <strike>{currTodo.text}</strike>
+          {renderButton()}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {renderToggleTodo()}
+          <span>{currTodo.text}</span>
+          {renderButton()}
+        </div>
+      );  
+    }
+
+  };
+
 
   return (
     <div>
@@ -72,17 +133,13 @@ const TodoList = (props) => {
       <ul>
         {visibleTodos.map((currTodo, index) => (
           <li key={index}>
-            { currTodo.isDone ?
-                <strike>{renderList(currTodo, index)}</strike>
-              :
-                <span>{renderList(currTodo, index)}</span>
-            }
+            {renderList(currTodo, index)}
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 TodoList.propTypes = {
   todos: PropTypes.array.isRequired,
