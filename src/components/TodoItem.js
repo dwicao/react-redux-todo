@@ -5,47 +5,50 @@ import ButtonEditAndRemove from './ButtonEditAndRemove';
 
 const TodoItem = (props) => {
 	const { actions, currTodo, index } = props;
+	let todoInputForm;
 
   const truncateStr = (str, len) => {
     return str.length > len ? str.substring(0, len - 3) + '...' : str;
-  }
+  };
 
   const _onApply = () => {
-		if(currTodo.text.length > 0) {
-    	actions.toggleEditTodo(currTodo.id);
+		const text = todoInputForm.value;
+
+		if(text.length > 0) {
+			actions.editTodo(currTodo.id, text);
+			actions.toggleEditTodo(currTodo.id);
 		} else {
-			return;
+			actions.toggleEditTodo(currTodo.id);
 		}
-  }
+  };
 
-  const renderToggleTodo = () => (
-    <ToggleTodo
-      isDone={currTodo.isDone}
-      todoId={currTodo.id}
-      {...props} />
-  );
+	const _onKeyDown = event => {
+		const text = event.target.value;
+		const isEnterKey = (event.which === 13);
+		const isEmpty = text.length === 0;
 
-  const renderButton = () => (
-    <ButtonEditAndRemove
-      todoId={currTodo.id}
-      {...props} />
-  );
-
-  const _onKeyDown = event => {
-    const input = event.target;
-    const text = input.value;
-    const isEnterKey = (event.which === 13);
-    const isEmpty = text.length === 0;
+		if(!isEmpty && isEnterKey) {
+			actions.editTodo(currTodo.id, text);
+			actions.toggleEditTodo(currTodo.id);
+		}
 
 		if(isEmpty && isEnterKey) {
 			actions.toggleEditTodo(currTodo.id);
 		}
+	};
 
-    if(!isEmpty && isEnterKey) {
-      actions.editTodo(currTodo.id, text);
-      actions.toggleEditTodo(currTodo.id);
-    }
-  }
+	const renderToggleTodo = () => (
+		<ToggleTodo
+			isDone={currTodo.isDone}
+			todoId={currTodo.id}
+			{...props} />
+	);
+
+	const renderButton = () => (
+		<ButtonEditAndRemove
+			todoId={currTodo.id}
+			{...props} />
+	);
 
   if(currTodo.isEditing){
     return (
@@ -53,8 +56,9 @@ const TodoItem = (props) => {
         <input
           type="text"
           onKeyDown={_onKeyDown}
-					defaultValue={currTodo.text} />
-        <button onClick={_onApply}>Apply</button>
+					defaultValue={currTodo.text}
+				 	ref={ el => todoInputForm = el } />
+        <button onClick={_onApply}>Close</button>
       </div>
     );
   }
