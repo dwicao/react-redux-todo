@@ -1,55 +1,45 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-export default class EditTodo extends Component {
-	constructor(props) {
-		super(props);
+const EditTodo = (props) => {
+  const { actions, currTodo, index } = props;
+	let todoInputForm;
+  
+  const _onApply = () => {
+		const text = todoInputForm.value;
 
-		this._onChange = this._onChange.bind(this);
-		this._onApply = this._onApply.bind(this);
-		this._onKeyDown = this._onKeyDown.bind(this);
-	}
+		if(text.length > 0) {
+			actions.editTodo(currTodo.id, text);
+			actions.toggleEditTodo(currTodo.id);
+		} else {
+			actions.toggleEditTodo(currTodo.id);
+		}
+  };
 
-	_onChange(event) {
-		const { actions, currTodo } = this.props;
-    actions.editTodo(currTodo.id, event.target.value);
-    event.target.value = currTodo.text;
-  }
-
-  _onApply() {
-  	const { actions, currTodo } = this.props;
-    actions.toggleEditTodo(currTodo.id);
-  }
-
-  _onKeyDown(event) {
-  	const { actions, currTodo } = this.props;
-    const input = event.target;
-    const text = input.value;
+  const _onKeyDown = event => {
+    const text = event.target.value;
     const isEnterKey = (event.which === 13);
-    const isLongEnough = text.length > 0;
+    const isEmpty = text.length === 0;
 
-    if(isEnterKey && isLongEnough) {
+    if(!isEmpty && isEnterKey) {
       actions.editTodo(currTodo.id, text);
       actions.toggleEditTodo(currTodo.id);
-      return (
-        <div>
-          {renderToggleTodo()}
-          <span>{currTodo.text}</span>
-          {renderButton()}
-        </div>
-      );
     }
-  }
 
-	render() {
-		return (
-			<div>
-				<input
-          type="text"
-          onKeyDown={this._onKeyDown}
-          onChange={this._onChange}
-          value={this.props.value} />
-        <button onClick={this._onApply}>Apply</button>
-			</div>
-		);
-	}
-}
+    if(isEmpty && isEnterKey) {
+      actions.toggleEditTodo(currTodo.id);
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        onKeyDown={_onKeyDown}
+        defaultValue={currTodo.text}
+        ref={ el => todoInputForm = el } />
+      <button onClick={_onApply}>Close</button>
+    </div>
+  );
+};
+
+export default EditTodo;
