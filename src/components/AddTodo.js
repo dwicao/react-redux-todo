@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
 
 const AddTodo = (props) => {
-  const { todos, actions } = props;
+  const {
+    todos,
+    actions
+  } = props;
 
   const _onAddTodo = event => {
     const input = event.target;

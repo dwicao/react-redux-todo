@@ -3,7 +3,11 @@ import FilterLink from './FilterLink';
 import TodoItem from './TodoItem';
 
 const TodoList = (props) => {
-  const { todos, actions, visibilityFilter } = props;
+  const {
+    todos,
+    actions,
+    visibilityFilter
+  } = props;
 
   const getVisibleTodos = (allTodos, whatFilter) => {
     switch(whatFilter) {

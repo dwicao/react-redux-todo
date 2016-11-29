@@ -1,8 +1,12 @@
 import React, {PropTypes} from 'react';
 
 const ToggleTodo = (props) => {
-	const { isDone, todoId, actions } = props;
-	
+	const {
+		isDone,
+		todoId,
+		actions
+	} = props;
+
 	const _toggleClick = id => event => actions.toggleTodo(id);
 
 	if(isDone) {

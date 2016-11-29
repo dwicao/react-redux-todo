@@ -1,7 +1,11 @@
 import React, {PropTypes} from 'react';
 
 const ButtonEditAndRemove = (props) => {
-	const { todoId, index, actions } = props;
+	const {
+		todoId,
+		index,
+		actions
+	} = props;
 
 	const _removeTodo = index => event => actions.removeTodo(index);
 

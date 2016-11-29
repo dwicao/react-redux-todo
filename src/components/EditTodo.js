@@ -1,9 +1,14 @@
 import React, { PropTypes } from 'react';
 
 const EditTodo = (props) => {
-  const { actions, currTodo, index } = props;
+  const {
+    actions,
+    currTodo,
+    index
+  } = props;
+
 	let todoInputForm;
-  
+
   const _onApply = () => {
 		const text = todoInputForm.value;
 
@@ -40,6 +45,12 @@ const EditTodo = (props) => {
       <button onClick={_onApply}>Close</button>
     </div>
   );
+};
+
+EditTodo.propTypes = {
+	actions: PropTypes.object.isRequired,
+	currTodo: PropTypes.object.isRequired,
+	index: PropTypes.number.isRequired
 };
 
 export default EditTodo;

@@ -4,7 +4,11 @@ import ButtonEditAndRemove from './ButtonEditAndRemove';
 import EditTodo from './EditTodo';
 
 const TodoItem = (props) => {
-	const { actions, currTodo, index } = props;
+	const {
+		actions,
+		currTodo,
+		index
+	} = props;
 
   const truncateStr = (str, len) => {
     return str.length > len ? str.substring(0, len - 3) + '...' : str;
