@@ -10,7 +10,7 @@ const TodoItem = (props) => {
 
   const truncateStr = (str, len) => {
     return str.length > len ? str.substring(0, len - 3) + '...' : str;
-  } 
+  }
 
   const _onChange = event => {
     actions.editTodo(currTodo.id, event.target.value);
@@ -18,7 +18,11 @@ const TodoItem = (props) => {
   }
 
   const _onApply = () => {
-    actions.toggleEditTodo(currTodo.id);
+		if(currTodo.text.length > 0) {
+    	actions.toggleEditTodo(currTodo.id);
+		} else {
+			return;
+		}
   }
 
   const renderToggleTodo = () => (
@@ -29,7 +33,7 @@ const TodoItem = (props) => {
   );
 
   const renderButton = () => (
-    <ButtonEditAndRemove 
+    <ButtonEditAndRemove
       todoId={currTodo.id}
       {...props} />
   );
@@ -39,6 +43,8 @@ const TodoItem = (props) => {
     const text = input.value;
     const isEnterKey = (event.which === 13);
     const isLongEnough = text.length > 0;
+
+		console.log('text.length', text.length);
 
     if(isEnterKey && isLongEnough) {
       actions.editTodo(currTodo.id, text);
