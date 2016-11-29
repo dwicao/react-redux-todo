@@ -6,15 +6,8 @@ import ButtonEditAndRemove from './ButtonEditAndRemove';
 const TodoItem = (props) => {
 	const { actions, currTodo, index } = props;
 
-	const _toggleClick = id => event => actions.toggleTodo(id);
-
   const truncateStr = (str, len) => {
     return str.length > len ? str.substring(0, len - 3) + '...' : str;
-  }
-
-  const _onChange = event => {
-    actions.editTodo(currTodo.id, event.target.value);
-    event.target.value = currTodo.text;
   }
 
   const _onApply = () => {
@@ -42,20 +35,15 @@ const TodoItem = (props) => {
     const input = event.target;
     const text = input.value;
     const isEnterKey = (event.which === 13);
-    const isLongEnough = text.length > 0;
+    const isEmpty = text.length === 0;
 
-		console.log('text.length', text.length);
+		if(isEmpty && isEnterKey) {
+			actions.toggleEditTodo(currTodo.id);
+		}
 
-    if(isEnterKey && isLongEnough) {
+    if(!isEmpty && isEnterKey) {
       actions.editTodo(currTodo.id, text);
       actions.toggleEditTodo(currTodo.id);
-      return (
-        <div>
-          {renderToggleTodo()}
-          <span>{currTodo.text}</span>
-          {renderButton()}
-        </div>
-      );
     }
   }
 
@@ -65,8 +53,7 @@ const TodoItem = (props) => {
         <input
           type="text"
           onKeyDown={_onKeyDown}
-          onChange={_onChange}
-          value={currTodo.text} />
+					defaultValue={currTodo.text} />
         <button onClick={_onApply}>Apply</button>
       </div>
     );

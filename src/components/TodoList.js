@@ -55,7 +55,7 @@ const TodoList = (props) => {
             <TodoItem
               currTodo={currTodo}
               index={index}
-              actions={actions} />
+              {...props} />
           </li>
         ))}
       </ul>
