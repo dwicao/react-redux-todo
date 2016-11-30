@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ClickOutside from 'react-click-outside';
 
 const EditTodo = (props) => {
   const {
@@ -36,14 +37,14 @@ const EditTodo = (props) => {
   };
 
   return (
-    <div>
+    <ClickOutside onClickOutside={_onApply}>
       <input
         type="text"
         onKeyDown={_onKeyDown}
         defaultValue={currTodo.text}
         ref={ el => todoInputForm = el } />
       <button onClick={_onApply}>Close</button>
-    </div>
+    </ClickOutside>
   );
 };
 
