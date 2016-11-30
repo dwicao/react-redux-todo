@@ -14,41 +14,26 @@ const TodoItem = (props) => {
     return str.length > len ? str.substring(0, len - 3) + '...' : str;
   };
 
-	const renderToggleTodo = () => (
-		<ToggleTodo
-			isDone={currTodo.isDone}
-			todoId={currTodo.id}
-			{...props} />
-	);
-
-	const renderButton = () => (
-		<ButtonEditAndRemove
-			todoId={currTodo.id}
-			{...props} />
-	);
-
-  if(currTodo.isEditing){
+  if(currTodo.isEditing) {
     return <EditTodo {...props} />
   }
 
-  if(currTodo.isDone) {
-    return (
-      <div>
-        {renderToggleTodo()}
-        <strike>{truncateStr(currTodo.text, 36)}</strike>
-        {renderButton()}
-      </div>
-    );
-  } else {
-	  return (
-	    <div>
-	      {renderToggleTodo()}
-	      <span>{truncateStr(currTodo.text, 36)}</span>
-	      {renderButton()}
-	    </div>
-	  );
-	}
+	const Tag = currTodo.isDone ? 'strike' : 'span';
 
+  return (
+    <div>
+			<ToggleTodo
+				isDone={currTodo.isDone}
+				todoId={currTodo.id}
+				{...props} />
+      <Tag>
+				{truncateStr(currTodo.text, 36)}
+			</Tag>
+			<ButtonEditAndRemove
+				todoId={currTodo.id}
+				{...props} />
+    </div>
+  );
 };
 
 TodoItem.propTypes = {
