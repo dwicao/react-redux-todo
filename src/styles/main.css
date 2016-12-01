@@ -1,0 +1,100 @@
+body {
+  font-family: sans-serif;
+  background-color: #673f83;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddTodo_container,
+.TodoList_container {
+  margin: 20px 20px 0px 20px;
+}
+
+.AddTodo {
+  width: 100%;
+  height: 50px;
+  font-size: 20pt;
+  color: #c7edee;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  padding-left: 15px;
+  background-color: #725387;
+}
+
+.FilterLink {
+  margin-left: 20px;
+  color: #9292b2;
+  font-size: 16pt;
+}
+
+.FilterLink span {
+  color: #c7edee;
+}
+
+.FilterLink a {
+  color: #9292b2;
+  text-decoration: none;
+}
+
+.TodoItem_ul {
+  padding-left: 0;
+  list-style: none;
+  border-top: 1px dotted #9292b2;
+}
+
+.TodoItem_li {
+  margin-top: 10px;
+  height: 50px;
+  border-bottom: 1px dotted #9292b2;
+}
+
+.TodoItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ToogleTodoButton,
+.RemoveTodoButton,
+.ToggleEditButton,
+.EditTodo_button {
+  outline: none;
+  height: 40px;
+  width: 40px;
+  border: 0;
+  border-radius: 100px;
+  background: #9292b2;;
+}
+
+.ToggleEditButton {
+  margin-right: 10px;
+}
+
+.TextTodo {
+  margin: auto auto auto 10px;
+  font-size: 16pt;
+  color: #c7edee;
+}
+
+.EditTodo_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.EditTodo_input {
+  width: 100%;
+  font-size: 20pt;
+  color: #c7edee;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  padding-left: 15px;
+  background-color: transparent;
+}
+
+.EditTodo_button {
+  margin-left: auto;
+}

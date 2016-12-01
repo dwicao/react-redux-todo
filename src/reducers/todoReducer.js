@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-export default function todoReducer(state = [], action) {
+const todoReducer = (state = [], action) => {
   switch(action.type) {
 
     case types.ADD_TODO:
@@ -52,3 +52,5 @@ export default function todoReducer(state = [], action) {
   }
 
 }
+
+export default todoReducer;

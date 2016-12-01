@@ -21,12 +21,12 @@ const TodoItem = (props) => {
 	const Tag = currTodo.isDone ? 'strike' : 'span';
 
   return (
-    <div>
+    <div className="TodoItem">
 			<ToggleTodo
 				isDone={currTodo.isDone}
 				todoId={currTodo.id}
 				{...props} />
-      <Tag>
+      <Tag className="TextTodo">
 				{truncateStr(currTodo.text, 36)}
 			</Tag>
 			<ButtonEditAndRemove

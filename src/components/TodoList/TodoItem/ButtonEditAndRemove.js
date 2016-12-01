@@ -13,8 +13,8 @@ const ButtonEditAndRemove = (props) => {
 
 	return (
 		<span>
-      <button onClick={_toggleEdit(todoId)}>&#8230;</button>
-      <button onClick={_removeTodo(index)}>&times;</button>
+      <button className="ToggleEditButton" onClick={_toggleEdit(todoId)}>&#8230;</button>
+      <button className="RemoveTodoButton" onClick={_removeTodo(index)}>&times;</button>
     </span>
 	);
 };

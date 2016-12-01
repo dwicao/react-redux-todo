@@ -6,10 +6,12 @@ import * as todoActions from '../actions/todoActions';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 
+import '../styles/main.css'
+
 class Home extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Home">
         <AddTodo {...this.props} />
         <TodoList {...this.props} />
       </div>

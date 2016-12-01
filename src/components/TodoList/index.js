@@ -30,8 +30,8 @@ const TodoList = (props) => {
   );
 
   return (
-    <div>
-      <p>
+    <div className="TodoList_container">
+      <span className="FilterLink">
         <FilterLink
           filter='SHOW_ALL'
           {...props}
@@ -52,10 +52,12 @@ const TodoList = (props) => {
         >
           Completed
         </FilterLink>
-      </p>
-      <ul>
+      </span>
+      <ul className="TodoItem_ul">
         {visibleTodos.map((currTodo, index) => (
-          <li key={index}>
+          <li 
+            key={index}
+            className="TodoItem_li">
             <TodoItem
               currTodo={currTodo}
               index={index}

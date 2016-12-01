@@ -28,6 +28,7 @@
     "react-click-outside": "github:tj/react-click-outside",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-undo": "^1.0.0-beta9-2"
   }
 }

@@ -19,11 +19,12 @@ const AddTodo = (props) => {
   }
 
   return (
-    <div>
+    <div className="AddTodo_container">
       <input
-          type="text"
-          placeholder="Press Enter to Add..."
-          onKeyDown={_onAddTodo} />
+        className="AddTodo"
+        type="text"
+        placeholder="Add an item..."
+        onKeyDown={_onAddTodo} />
     </div>
   );
 }

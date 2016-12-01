@@ -10,9 +10,9 @@ const ToggleTodo = (props) => {
 	const _toggleClick = id => event => actions.toggleTodo(id);
 
 	if(isDone) {
-		return <button onClick={_toggleClick(todoId)}>&#9745;</button>;
+		return <button className="ToogleTodoButton" onClick={_toggleClick(todoId)}>&#9745;</button>;
 	} else {
-		return <button onClick={_toggleClick(todoId)}>&#9744;</button>;
+		return <button className="ToogleTodoButton" onClick={_toggleClick(todoId)}>&#9744;</button>;
 	}
 
 };

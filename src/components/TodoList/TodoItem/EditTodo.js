@@ -37,13 +37,20 @@ const EditTodo = (props) => {
   };
 
   return (
-    <ClickOutside onClickOutside={_onApply}>
+    <ClickOutside
+      className="EditTodo_container"
+      onClickOutside={_onApply} >
       <input
+        className="EditTodo_input"
         type="text"
         onKeyDown={_onKeyDown}
         defaultValue={currTodo.text}
         ref={ el => todoInputForm = el } />
-      <button onClick={_onApply}>Close</button>
+      <button
+        className="EditTodo_button"
+        onClick={_onApply}>
+          C
+      </button>
     </ClickOutside>
   );
 };
