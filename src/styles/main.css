@@ -3,11 +3,6 @@ body {
   background-color: #673f83;
 }
 
-.Home {
-  display: flex;
-  flex-direction: column;
-}
-
 .AddTodo_container,
 .TodoList_container {
   margin: 20px 20px 0px 20px;
@@ -41,6 +36,8 @@ body {
 }
 
 .TodoItem_ul {
+  display: flex;
+  flex-direction: column-reverse;
   padding-left: 0;
   list-style: none;
   border-top: 1px dotted #9292b2;
@@ -73,10 +70,17 @@ body {
   margin-right: 10px;
 }
 
-.TextTodo {
+.TextTodo_active {
   margin: auto auto auto 10px;
   font-size: 16pt;
   color: #c7edee;
+}
+
+.TextTodo_completed {
+  margin: auto auto auto 10px;
+  font-size: 16pt;
+  color: #9292b2;
+  text-decoration: line-through;
 }
 
 .EditTodo_container {
@@ -93,8 +97,4 @@ body {
   outline: none;
   padding-left: 15px;
   background-color: transparent;
-}
-
-.EditTodo_button {
-  margin-left: auto;
 }

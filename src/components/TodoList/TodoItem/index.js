@@ -18,7 +18,7 @@ const TodoItem = (props) => {
     return <EditTodo {...props} />
   }
 
-	const Tag = currTodo.isDone ? 'strike' : 'span';
+	const isCompleted = currTodo.isDone ? 'TextTodo_completed' : 'TextTodo_active';
 
   return (
     <div className="TodoItem">
@@ -26,9 +26,9 @@ const TodoItem = (props) => {
 				isDone={currTodo.isDone}
 				todoId={currTodo.id}
 				{...props} />
-      <Tag className="TextTodo">
+      <span className={isCompleted}>
 				{truncateStr(currTodo.text, 36)}
-			</Tag>
+			</span>
 			<ButtonEditAndRemove
 				todoId={currTodo.id}
 				{...props} />
