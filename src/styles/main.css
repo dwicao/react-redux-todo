@@ -74,6 +74,9 @@ body {
   margin: auto auto auto 10px;
   font-size: 16pt;
   color: #c7edee;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .TextTodo_completed {
@@ -81,6 +84,10 @@ body {
   font-size: 16pt;
   color: #9292b2;
   text-decoration: line-through;
+}
+
+.ButtonEditAndRemove_container {
+  display: flex;
 }
 
 .EditTodo_container {
@@ -97,4 +104,8 @@ body {
   outline: none;
   padding-left: 15px;
   background-color: transparent;
+}
+
+.EditTodo_button {
+  margin-left: 10px;
 }

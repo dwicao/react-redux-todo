@@ -27,7 +27,7 @@ const TodoItem = (props) => {
 				todoId={currTodo.id}
 				{...props} />
       <span className={isCompleted}>
-				{truncateStr(currTodo.text, 36)}
+				{currTodo.text}
 			</span>
 			<ButtonEditAndRemove
 				todoId={currTodo.id}

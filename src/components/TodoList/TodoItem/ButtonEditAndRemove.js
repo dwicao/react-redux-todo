@@ -12,7 +12,7 @@ const ButtonEditAndRemove = (props) => {
   const _toggleEdit = id => event => actions.toggleEditTodo(id);
 
 	return (
-		<span>
+		<span className="ButtonEditAndRemove_container">
       <button className="ToggleEditButton" onClick={_toggleEdit(todoId)}>&#8230;</button>
       <button className="RemoveTodoButton" onClick={_removeTodo(index)}>&times;</button>
     </span>

@@ -43,6 +43,7 @@ const EditTodo = (props) => {
       <input
         className="EditTodo_input"
         type="text"
+        maxLength={40}
         onKeyDown={_onKeyDown}
         defaultValue={currTodo.text}
         ref={ el => todoInputForm = el } />

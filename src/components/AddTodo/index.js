@@ -24,6 +24,7 @@ const AddTodo = (props) => {
         className="AddTodo"
         type="text"
         placeholder="Add an item..."
+        maxLength={40}
         onKeyDown={_onAddTodo} />
     </div>
   );
