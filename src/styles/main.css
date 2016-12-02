@@ -75,7 +75,7 @@ body {
 }
 
 .TextTodo_active {
-  margin: auto auto auto 10px;
+  margin: auto auto auto 20px;
   font-size: 40pt;
   color: #c7edee;
   text-overflow: ellipsis;
