@@ -5,32 +5,32 @@ body {
 
 .IconSvg {
   margin: auto;
-  height: 70px;
-  width: 70px;
+  height: 30px;
+  width: 30px;
   fill: #673f83;
 }
 
 .AddTodo_container,
 .TodoList_container {
-  margin: 40px 20px 0px 20px;
+  margin: 20px 10px 0px 10px;
 }
 
 .AddTodo {
   width: 100%;
-  height: 130px;
-  font-size: 50pt;
+  height: 60px;
+  font-size: 18pt;
   color: #c7edee;
   box-sizing: border-box;
   border: 0;
   outline: none;
-  padding-left: 30px;
+  padding-left: 20px;
   background-color: #725387;
 }
 
 .FilterLink {
-  margin-left: 20px;
+  margin-left: 10px;
   color: #9292b2;
-  font-size: 45pt;
+  font-size: 14pt;
 }
 
 .FilterLink span {
@@ -43,13 +43,13 @@ body {
 }
 
 .TodoItem {
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   justify-content: space-between;
 }
 
 .TodoItem_ul {
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column-reverse;
   padding-left: 0;
@@ -70,8 +70,8 @@ body {
   margin-top: auto;
   margin-bottom: auto;
   outline: none;
-  height: 100px;
-  width: 100px;
+  height: 40px;
+  width: 40px;
   font-size: 40pt;
   border: 0;
   border-radius: 100px;
@@ -83,13 +83,13 @@ body {
 }
 
 .ToggleEditButton {
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .TextTodo_active {
-  margin: auto auto auto 20px;
-  font-size: 40pt;
+  margin: auto auto auto 10px;
+  font-size: 14pt;
   color: #c7edee;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -97,8 +97,8 @@ body {
 }
 
 .TextTodo_completed {
-  margin: auto auto auto 20px;
-  font-size: 40pt;
+  margin: auto auto auto 10px;
+  font-size: 14pt;
   color: #9292b2;
   text-decoration: line-through;
   text-overflow: ellipsis;
@@ -116,9 +116,9 @@ body {
 }
 
 .EditTodo_input {
-  margin: 20px 0;
+  margin: 10px 0;
   width: 100%;
-  font-size: 45pt;
+  font-size: 15pt;
   color: #c7edee;
   box-sizing: border-box;
   border: 0;
@@ -128,5 +128,75 @@ body {
 }
 
 .EditTodo_button {
-  margin: 20px 0 20px 20px;
+  margin: 10px 0 10px 10px;
+}
+
+
+/*tablets, 768px and up*/
+@media (min-width: 768px) {
+  .AddTodo {
+    height: 80px;
+    font-size: 24pt;
+    margin-bottom: 15px;
+  }
+
+  .FilterLink {
+    margin-left: 25px;
+    font-size: 20pt;
+  }
+
+  .TodoItem {
+    margin: 10px 0;
+  }
+
+  .ToogleTodoButton,
+  .RemoveTodoButton,
+  .ToggleEditButton,
+  .EditTodo_button {
+    height: 50px;
+    width: 50px;
+  }
+
+  .IconSvg {
+    height: 45px;
+    width: 45px;
+  }
+
+  .TextTodo_active,
+  .TextTodo_completed {
+    font-size: 20pt;
+  }
+
+  .EditTodo_input {
+    font-size: 22pt;
+  }
+
+  .TodoItem_ul {
+    margin-top: 30px;
+  }
+
+  .ToggleEditButton {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+
+/*desktop, 992px and up*/
+@media (min-width: 992px) {
+  .Home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .AddTodo_container {
+    width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .TodoList_container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }

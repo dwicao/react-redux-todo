@@ -11,7 +11,7 @@ import '../styles/main.css';
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="Home">
         <AddTodo {...this.props} />
         <TodoList {...this.props} />
       </div>
