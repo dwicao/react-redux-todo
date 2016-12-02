@@ -78,8 +78,13 @@ body {
   background: #9292b2;;
 }
 
+.ToogleTodoButton_container {
+  display: flex;
+}
+
 .ToggleEditButton {
   margin-right: 20px;
+  margin-left: 20px;
 }
 
 .TextTodo_active {
@@ -96,6 +101,9 @@ body {
   font-size: 40pt;
   color: #9292b2;
   text-decoration: line-through;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .ButtonEditAndRemove_container {

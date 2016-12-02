@@ -17,7 +17,7 @@ const ToggleTodo = (props) => {
 			<IconUncheck className="IconUncheck IconSvg" />;
 
 	return (
-		<div>
+		<div className="ToogleTodoButton_container">
 			<button
 				className="ToogleTodoButton"
 				onClick={_toggleClick(todoId)}>
