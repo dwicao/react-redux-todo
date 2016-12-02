@@ -1,4 +1,6 @@
 import React, {PropTypes} from 'react';
+import IconEdit from '../../../icons/edit.svg';
+import IconDelete from '../../../icons/delete.svg';
 
 const ButtonEditAndRemove = (props) => {
 	const {
@@ -13,8 +15,12 @@ const ButtonEditAndRemove = (props) => {
 
 	return (
 		<span className="ButtonEditAndRemove_container">
-      <button className="ToggleEditButton" onClick={_toggleEdit(todoId)}>&#8230;</button>
-      <button className="RemoveTodoButton" onClick={_removeTodo(index)}>&times;</button>
+      <button className="ToggleEditButton" onClick={_toggleEdit(todoId)}>
+        <IconEdit className="IconEdit IconSvg" />
+      </button>
+      <button className="RemoveTodoButton" onClick={_removeTodo(index)}>
+        <IconDelete className="IconDelete IconSvg" />
+      </button>
     </span>
 	);
 };

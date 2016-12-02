@@ -1,4 +1,6 @@
 import React, {PropTypes} from 'react';
+import IconCheck from '../../../icons/check.svg';
+import IconUncheck from '../../../icons/uncheck.svg';
 
 const ToggleTodo = (props) => {
 	const {
@@ -9,28 +11,20 @@ const ToggleTodo = (props) => {
 
 	const _toggleClick = id => event => actions.toggleTodo(id);
 
-	if(isDone) {
-		return (
-			<div>
-				<button
-					className="ToogleTodoButton"
-					onClick={_toggleClick(todoId)}>
-					&#9745;
-				</button>
-			</div>
-		);
-	} else {
-		return (
-			<div>
-				<button
-					className="ToogleTodoButton"
-					onClick={_toggleClick(todoId)}>
-					&#9744;
-				</button>
-			</div>
-		);
-	}
+	const isCompleted = isDone ?
+			<IconCheck className="IconCheck IconSvg" />
+		:
+			<IconUncheck className="IconUncheck IconSvg" />;
 
+	return (
+		<div>
+			<button
+				className="ToogleTodoButton"
+				onClick={_toggleClick(todoId)}>
+					{isCompleted}
+			</button>
+		</div>
+	);
 };
 
 ToggleTodo.propTypes = {

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import ClickOutside from 'react-click-outside';
+import IconCancel from '../../../icons/cancel.svg';
 
 const EditTodo = (props) => {
   const {
@@ -47,11 +48,13 @@ const EditTodo = (props) => {
         onKeyDown={_onKeyDown}
         defaultValue={currTodo.text}
         ref={ el => todoInputForm = el } />
-      <button
-        className="EditTodo_button"
-        onClick={_onApply}>
-          C
-      </button>
+      <div>
+        <button
+          className="EditTodo_button"
+          onClick={_onApply}>
+            <IconCancel className="IconCancel IconSvg" />
+        </button>
+      </div>
     </ClickOutside>
   );
 };
