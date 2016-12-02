@@ -10,15 +10,11 @@ const TodoItem = (props) => {
 		index
 	} = props;
 
-  const truncateStr = (str, len) => {
-    return str.length > len ? str.substring(0, len - 3) + '...' : str;
-  };
-
+	const isCompleted = currTodo.isDone ? 'TextTodo_completed' : 'TextTodo_active';
+  
   if(currTodo.isEditing) {
     return <EditTodo {...props} />
   }
-
-	const isCompleted = currTodo.isDone ? 'TextTodo_completed' : 'TextTodo_active';
 
   return (
     <div className="TodoItem">

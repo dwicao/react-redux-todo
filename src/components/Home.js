@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as todoActions from '../actions/todoActions';
@@ -6,9 +6,9 @@ import * as todoActions from '../actions/todoActions';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 
-import '../styles/main.css'
+import '../styles/main.css';
 
-class Home extends React.Component {
+class Home extends Component {
   render() {
     return (
       <div>
