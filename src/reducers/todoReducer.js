@@ -5,8 +5,8 @@ const todoReducer = (state = [], action) => {
 
     case types.ADD_TODO:
       return [
-        ...state,
-        action.payload
+        action.payload,
+        ...state
       ];
 
     case types.TOGGLE_TODO:
@@ -37,10 +37,9 @@ const todoReducer = (state = [], action) => {
       });
 
     case types.REMOVE_TODO:
-      return [
-        ...state.slice(0, action.index),
-        ...state.slice(action.index + 1)
-      ];
+      return state.filter(todo => {
+        return todo.id !== action.id;
+      });
 
     case types.FILTER_TODO:
       return state.filter(todo => {

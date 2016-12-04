@@ -37,10 +37,10 @@ export function editTodo(id, text) {
   };
 }
 
-export function removeTodo(index) {
+export function removeTodo(id) {
   return {
     type: types.REMOVE_TODO,
-    index
+    id
   };
 }
 

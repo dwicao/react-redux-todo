@@ -53,7 +53,7 @@ body {
 .TodoItem_ul {
   margin-top: 20px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   padding-left: 0;
   list-style: none;
   border-top: 2px solid #9292b2;

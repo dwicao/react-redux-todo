@@ -9,7 +9,7 @@ const ButtonEditAndRemove = (props) => {
 		actions
 	} = props;
 
-	const _removeTodo = index => event => actions.removeTodo(index);
+	const _removeTodo = id => event => actions.removeTodo(id);
 
   const _toggleEdit = id => event => actions.toggleEditTodo(id);
 
@@ -18,7 +18,7 @@ const ButtonEditAndRemove = (props) => {
       <button className="ToggleEditButton" onClick={_toggleEdit(todoId)}>
         <IconEdit className="IconEdit IconSvg" />
       </button>
-      <button className="RemoveTodoButton" onClick={_removeTodo(index)}>
+      <button className="RemoveTodoButton" onClick={_removeTodo(todoId)}>
         <IconDelete className="IconDelete IconSvg" />
       </button>
     </span>
